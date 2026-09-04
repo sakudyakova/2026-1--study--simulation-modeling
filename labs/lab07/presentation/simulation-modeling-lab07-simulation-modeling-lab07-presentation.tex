@@ -1,0 +1,656 @@
+% Options for packages loaded elsewhere
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+  ignorenonframetext,
+  aspectratio=169,
+  russian,
+]{beamer}
+\newif\ifbibliography
+\usepackage{pgfpages}
+\setbeamertemplate{caption}[numbered]
+\setbeamertemplate{caption label separator}{: }
+\setbeamercolor{caption name}{fg=normal text.fg}
+\beamertemplatenavigationsymbolshorizontal
+% remove section numbering
+\setbeamertemplate{part page}{
+  \centering
+  \begin{beamercolorbox}[sep=16pt,center]{part title}
+    \usebeamerfont{part title}\insertpart\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{section page}{
+  \centering
+  \begin{beamercolorbox}[sep=12pt,center]{section title}
+    \usebeamerfont{section title}\insertsection\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{subsection page}{
+  \centering
+  \begin{beamercolorbox}[sep=8pt,center]{subsection title}
+    \usebeamerfont{subsection title}\insertsubsection\par
+  \end{beamercolorbox}
+}
+% Prevent slide breaks in the middle of a paragraph
+\widowpenalties 1 10000
+\raggedbottom
+\AtBeginPart{
+  \frame{\partpage}
+}
+\AtBeginSection{
+  \ifbibliography
+  \else
+    \frame{\sectionpage}
+  \fi
+}
+\AtBeginSubsection{
+  \frame{\subsectionpage}
+}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{241,243,245}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.40,0.45,0.13}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\ExtensionTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.28,0.35,0.67}{#1}}
+\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.00,0.46,0.62}{#1}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.07,0.07,0.07}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
+
+\usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
+\usepackage{calc} % for calculating minipage widths
+\usepackage{caption}
+% Make caption package work with longtable
+\makeatletter
+\def\fnum@table{\tablename~\thetable}
+\makeatother
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+
+
+
+\ifLuaTeX
+\usepackage[bidi=basic,shorthands=off,provide=*]{babel}
+\else
+\usepackage[bidi=default,shorthands=off,provide=*]{babel}
+\fi
+\ifLuaTeX
+  \usepackage{selnolig} % disable illegal ligatures
+\fi
+
+
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+
+
+ 
+
+\usepackage[]{csquotes}
+
+\IfFileExists{plex-otf.sty}{
+  %% Full TeXlive
+  % \usepackage[%
+  %   % math,
+  %   RM={Scale=0.94},SS={Scale=0.94},SScon={Scale=0.94},TT={Scale=MatchLowercase,FakeStretch=0.9},DefaultFeatures={Ligatures=Common}
+  % ]{plex-otf}
+}{
+  %% TinyTeX
+  \usepackage{libertine}
+}
+
+%%% Load theme
+% https://deic.uab.cat/~iblanes/beamer_gallery/
+\IfFileExists{beamerthemegotham.sty}{
+  %% Full TeXlive
+  \usetheme{gotham}
+  \gothamset{
+    numbering=totalpagenumber,
+    parttocframe default=off,
+    sectiontocframe default=off,
+    subsectiontocframe default=off,
+  }
+}{
+  %% TinyTeX
+  \usetheme{Madrid}
+}
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\AtBeginDocument{%
+\ifdefined\contentsname
+  \renewcommand*\contentsname{Содержание}
+\else
+  \newcommand\contentsname{Содержание}
+\fi
+\ifdefined\listfigurename
+  \renewcommand*\listfigurename{Список иллюстраций}
+\else
+  \newcommand\listfigurename{Список иллюстраций}
+\fi
+\ifdefined\listtablename
+  \renewcommand*\listtablename{Список таблиц}
+\else
+  \newcommand\listtablename{Список таблиц}
+\fi
+\ifdefined\figurename
+  \renewcommand*\figurename{Рисунок}
+\else
+  \newcommand\figurename{Рисунок}
+\fi
+\ifdefined\tablename
+  \renewcommand*\tablename{Таблица}
+\else
+  \newcommand\tablename{Таблица}
+\fi
+}
+\@ifpackageloaded{float}{}{\usepackage{float}}
+\floatstyle{ruled}
+\@ifundefined{c@chapter}{\newfloat{codelisting}{h}{lop}}{\newfloat{codelisting}{h}{lop}[chapter]}
+\floatname{codelisting}{Список}
+\newcommand*\listoflistings{\listof{codelisting}{Листинги}}
+\makeatother
+\makeatletter
+\makeatother
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
+\makeatother
+
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+% fallback for those not using the hyperref driver hyperxmp:
+\makeatletter
+\@ifundefined{xmpquote}{\newcommand{\xmpquote}[1]{#1}}{}
+\makeatother
+\hypersetup{
+  pdftitle={Лабораторная работа №7},
+  pdfauthor={Кудякова София Андреевна},
+  pdflang={ru},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+
+\title{\texorpdfstring{Лабораторная работа №7}{Лабораторная работа №7}}
+\subtitle{\texorpdfstring{Дискретно-событийное
+моделирование}{Дискретно-событийное моделирование}}
+\author{Кудякова София Андреевна}
+\date{2026-08-29}
+
+\begin{document}
+\frame{\titlepage}
+
+\renewcommand*\contentsname{Содержание}
+\begin{frame}[allowframebreaks]
+  \frametitle{Содержание}
+  \setcounter{tocdepth}{1}
+  \tableofcontents
+\end{frame}
+\setcounter{tocdepth}{1}
+\tableofcontents
+}
+
+\section{Цель
+работы}\label{ux446ux435ux43bux44c-ux440ux430ux431ux43eux442ux44b}
+
+\begin{frame}[fragile]{Цель работы}
+\begin{itemize}[<+->]
+\tightlist
+\item
+  Освоить дискретно-событийное моделирование в Julia с использованием
+  \texttt{ConcurrentSim}.
+\item
+  Реализовать модели \textbf{M/M/c} и \textbf{Росса}.
+\item
+  Провести параметрические эксперименты.
+\item
+  Построить и проанализировать результаты моделирования.
+\item
+  Использовать литературное программирование с \texttt{Literate.jl}.
+\end{itemize}
+\end{frame}
+
+\section{Дискретно-событийное
+моделирование}\label{ux434ux438ux441ux43aux440ux435ux442ux43dux43e-ux441ux43eux431ux44bux442ux438ux439ux43dux43eux435-ux43cux43eux434ux435ux43bux438ux440ux43eux432ux430ux43dux438ux435}
+
+\begin{frame}{Дискретно-событийное моделирование}
+\textbf{Discrete-Event Simulation (DES)} --- метод моделирования, при
+котором состояние системы изменяется в дискретные моменты времени при
+наступлении событий.
+
+Основные события:
+
+\begin{itemize}[<+->]
+\tightlist
+\item
+  прибытие заявки;
+\item
+  начало и окончание обслуживания;
+\item
+  отказ машины;
+\item
+  окончание ремонта.
+\end{itemize}
+
+Между событиями состояние системы не изменяется.
+\end{frame}
+
+\section{Модель M/M/c}\label{ux43cux43eux434ux435ux43bux44c-mmc}
+
+\begin{frame}{Модель M/M/c}
+Система \textbf{M/M/c} характеризуется:
+
+\begin{itemize}[<+->]
+\tightlist
+\item
+  пуассоновским входящим потоком с интенсивностью \(\lambda\);
+\item
+  экспоненциальным временем обслуживания с интенсивностью \(\mu\);
+\item
+  \(c\) параллельными обслуживающими устройствами.
+\end{itemize}
+
+Загрузка системы:
+
+\[
+\rho = \frac{\lambda}{c\mu}
+\]
+
+Стационарный режим существует при \(\rho < 1\).
+
+Исследовались время ожидания заявок и загрузка очереди.
+\end{frame}
+
+\section{Результаты
+M/M/c}\label{ux440ux435ux437ux443ux43bux44cux442ux430ux442ux44b-mmc}
+
+\begin{frame}{Результаты M/M/c}
+\begin{figure}[H]
+
+{\centering \includegraphics[width=0.85\linewidth,height=\textheight,keepaspectratio]{image/1.png}
+
+}
+
+\caption{Время ожидания заявок}
+
+\end{figure}%
+
+При увеличении нагрузки системы время ожидания заявок возрастает.
+\end{frame}
+
+\section{Загрузка очереди
+M/M/c}\label{ux437ux430ux433ux440ux443ux437ux43aux430-ux43eux447ux435ux440ux435ux434ux438-mmc}
+
+\begin{frame}{Загрузка очереди M/M/c}
+\begin{figure}[H]
+
+{\centering \includegraphics[width=0.85\linewidth,height=\textheight,keepaspectratio]{image/2.png}
+
+}
+
+\caption{Загрузка очереди M/M/c}
+
+\end{figure}%
+
+Рост нагрузки приводит к увеличению вероятности образования очереди.
+
+Параметрическое исследование проводилось при изменении:
+
+\begin{itemize}[<+->]
+\tightlist
+\item
+  количества серверов \(c\);
+\item
+  интенсивности поступления заявок \(\lambda\);
+\item
+  загрузки системы \(\rho\).
+\end{itemize}
+
+Увеличение числа серверов позволяет снизить нагрузку на очередь.
+\end{frame}
+
+\section{Модель
+Росса}\label{ux43cux43eux434ux435ux43bux44c-ux440ux43eux441ux441ux430}
+
+\begin{frame}{Модель Росса}
+Модель Росса описывает систему с:
+
+\begin{itemize}[<+->]
+\tightlist
+\item
+  \(N\) основными машинами;
+\item
+  \(S\) резервными машинами;
+\item
+  ремонтниками;
+\item
+  отказами и последующим ремонтом.
+\end{itemize}
+
+При отказе работающая машина заменяется резервной, если резерв доступен.
+
+Отказавшая машина поступает в ремонт.
+
+При отсутствии резерва система может перейти в состояние краха.
+\end{frame}
+
+\section{Динамика исправных
+машин}\label{ux434ux438ux43dux430ux43cux438ux43aux430-ux438ux441ux43fux440ux430ux432ux43dux44bux445-ux43cux430ux448ux438ux43d}
+
+\begin{frame}{Динамика исправных машин}
+\begin{figure}[H]
+
+{\centering \includegraphics[width=0.85\linewidth,height=\textheight,keepaspectratio]{image/3.png}
+
+}
+
+\caption{Динамика исправных машин}
+
+\end{figure}%
+
+График показывает изменение количества исправных машин во времени
+вследствие отказов и ремонтов.
+\end{frame}
+
+\section{Распределение времени до
+краха}\label{ux440ux430ux441ux43fux440ux435ux434ux435ux43bux435ux43dux438ux435-ux432ux440ux435ux43cux435ux43dux438-ux434ux43e-ux43aux440ux430ux445ux430}
+
+\begin{frame}{Распределение времени до краха}
+\begin{figure}[H]
+
+{\centering \includegraphics[width=0.85\linewidth,height=\textheight,keepaspectratio]{image/4.png}
+
+}
+
+\caption{Распределение времени до краха}
+
+\end{figure}%
+
+Гистограмма показывает распределение времени до краха системы по
+результатам имитационных экспериментов.
+
+Чем больше время до краха, тем выше живучесть системы.
+\end{frame}
+
+\section{Влияние числа
+ремонтников}\label{ux432ux43bux438ux44fux43dux438ux435-ux447ux438ux441ux43bux430-ux440ux435ux43cux43eux43dux442ux43dux438ux43aux43eux432}
+
+\begin{frame}{Влияние числа ремонтников}
+Исследовалось влияние количества ремонтников на время до краха системы.
+
+Рассматривались два варианта:
+
+\begin{itemize}[<+->]
+\tightlist
+\item
+  \(N=10\) основных машин;
+\item
+  \(N=6\) основных машин.
+\end{itemize}
+\end{frame}
+
+\section{Ремонтники: N =
+10}\label{ux440ux435ux43cux43eux43dux442ux43dux438ux43aux438-n-10}
+
+\begin{frame}{Ремонтники: N = 10}
+\begin{figure}[H]
+
+{\centering \includegraphics[width=0.85\linewidth,height=\textheight,keepaspectratio]{image/5.png}
+
+}
+
+\caption{Влияние числа ремонтников при N=10}
+
+\end{figure}%
+
+Увеличение числа ремонтников позволяет быстрее восстанавливать
+отказавшие машины.
+\end{frame}
+
+\section{Ремонтники: N =
+6}\label{ux440ux435ux43cux43eux43dux442ux43dux438ux43aux438-n-6}
+
+\begin{frame}{Ремонтники: N = 6}
+\begin{figure}[H]
+
+{\centering \includegraphics[width=0.85\linewidth,height=\textheight,keepaspectratio]{image/6.png}
+
+}
+
+\caption{Влияние числа ремонтников при N=6}
+
+\end{figure}%
+
+Влияние числа ремонтников зависит от количества основных машин и других
+параметров системы.
+\end{frame}
+
+\section{Влияние резервных
+машин}\label{ux432ux43bux438ux44fux43dux438ux435-ux440ux435ux437ux435ux440ux432ux43dux44bux445-ux43cux430ux448ux438ux43d}
+
+\begin{frame}{Влияние резервных машин}
+Количество резервных машин \(S\) является важным параметром модели
+Росса.
+
+Чем больше доступный резерв, тем больше отказов можно компенсировать без
+немедленного краха системы.
+
+Исследование проведено для \(N=10\) и \(N=6\).
+\end{frame}
+
+\section{Резерв: N = 10}\label{ux440ux435ux437ux435ux440ux432-n-10}
+
+\begin{frame}{Резерв: N = 10}
+\begin{figure}[H]
+
+{\centering \includegraphics[width=0.85\linewidth,height=\textheight,keepaspectratio]{image/7.png}
+
+}
+
+\caption{Влияние числа резервных машин при N=10}
+
+\end{figure}%
+
+Увеличение количества резервных машин позволяет дольше поддерживать
+работоспособность системы после отказов.
+\end{frame}
+
+\section{Резерв: N = 6}\label{ux440ux435ux437ux435ux440ux432-n-6}
+
+\begin{frame}{Резерв: N = 6}
+\begin{figure}[H]
+
+{\centering \includegraphics[width=0.85\linewidth,height=\textheight,keepaspectratio]{image/8.png}
+
+}
+
+\caption{Влияние числа резервных машин при N=6}
+
+\end{figure}%
+
+График показывает зависимость времени работы системы до краха от
+количества резервных машин.
+\end{frame}
+
+\section{Параметрические
+эксперименты}\label{ux43fux430ux440ux430ux43cux435ux442ux440ux438ux447ux435ux441ux43aux438ux435-ux44dux43aux441ux43fux435ux440ux438ux43cux435ux43dux442ux44b}
+
+\begin{frame}[fragile]{Параметрические эксперименты}
+Для автоматизации серии экспериментов использовались:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{des\_parameterized.jl}
+\NormalTok{ross\_scan\_parameters.jl}
+\end{Highlighting}
+\end{Shaded}
+
+Результаты сохранялись в CSV-файлы:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{data/des\_mmc\_summary.csv}
+\NormalTok{data/des\_ross\_summary.csv}
+\NormalTok{data/mmc\_summary.csv}
+\NormalTok{data/ross\_crash\_times.csv}
+\NormalTok{data/ross\_parameter\_scan.csv}
+\NormalTok{data/ross\_parameterized.csv}
+\NormalTok{data/ross\_summary.csv}
+\end{Highlighting}
+\end{Shaded}
+
+Параметрический подход позволяет исследовать различные варианты системы
+без изменения основной реализации моделей.
+\end{frame}
+
+\section{Литературное
+программирование}\label{ux43bux438ux442ux435ux440ux430ux442ux443ux440ux43dux43eux435-ux43fux440ux43eux433ux440ux430ux43cux43cux438ux440ux43eux432ux430ux43dux438ux435}
+
+\begin{frame}[fragile]{Литературное программирование}
+Для преобразования исходного кода использовался \textbf{Literate.jl}.
+
+В проекте присутствуют:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{scripts/des\_literate.jl}
+\NormalTok{scripts/des\_parameterized\_literate.jl}
+\end{Highlighting}
+\end{Shaded}
+
+Литературное программирование объединяет исходный код с поясняющим
+текстом и позволяет формировать производные документы.
+\end{frame}
+
+\section{Структура
+проекта}\label{ux441ux442ux440ux443ux43aux442ux443ux440ux430-ux43fux440ux43eux435ux43aux442ux430}
+
+\begin{frame}[fragile]{Структура проекта}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{project/}
+\NormalTok{├── data/}
+\NormalTok{├── plots/}
+\NormalTok{├── scripts/}
+\NormalTok{├── src/}
+\NormalTok{├── test/}
+\NormalTok{├── Project.toml}
+\NormalTok{├── Manifest.toml}
+\NormalTok{└── README.md}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}[<+->]
+\tightlist
+\item
+  \texttt{data/} --- результаты моделирования;
+\item
+  \texttt{plots/} --- графики;
+\item
+  \texttt{scripts/} --- скрипты экспериментов.
+\end{itemize}
+\end{frame}
+
+\section{Выводы}\label{ux432ux44bux432ux43eux434ux44b}
+
+\begin{frame}[fragile]{Выводы}
+В ходе лабораторной работы:
+
+\begin{itemize}[<+->]
+\tightlist
+\item
+  изучено дискретно-событийное моделирование;
+\item
+  реализована модель \textbf{M/M/c};
+\item
+  исследовано влияние параметров системы на очередь;
+\item
+  реализована модель \textbf{Росса} с резервированием и ремонтом;
+\item
+  исследовано влияние числа ремонтников;
+\item
+  исследовано влияние количества резервных машин;
+\item
+  выполнены параметрические эксперименты;
+\item
+  использован \texttt{Literate.jl}.
+\end{itemize}
+
+\textbf{Итог:} параметры системы оказывают существенное влияние на время
+ожидания, надёжность и время до краха.
+\end{frame}
+
+
+
+
+\end{document}
